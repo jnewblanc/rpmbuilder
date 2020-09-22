@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  rpmbuilder:
+    image: rpmbuilder
+    environment:
+      # This is the workspace/repo that we are packaging.
+      - WSROOT="/home/build/repos/rpmbuilder"
+    volumes:
+      # Mount the WSROOT workspace that we are packaging.  This repo contains the
+      # source content and some packaging files.  The resulting rpm is placed in
+      # this repo.
+      - ./rpmbuilder/:/home/build/repos/rpmbuilder
+#    command: sleep 1000

@@ -1,0 +1,9 @@
+# Packages required for rpmbuilder runtime.
+#   Install packages by running:
+#     yum install -y $(cat rpm_requirements.txt | grep -v '#')
+
+expect
+rpm-build
+rpm-sign
+rpmlint
+rsync
