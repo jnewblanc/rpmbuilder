@@ -1,6 +1,7 @@
 # rpmbuilder
 
-A collection of scripts to enable rpm building in a docker container.
+A framework and collection of scripts to facilitate building rpms in a docker
+container.
 
 ### Installation ###
 1. Install docker
@@ -24,7 +25,7 @@ A collection of scripts to enable rpm building in a docker container.
 ### Execution ###
 1. Run the docker container to generate the rpm
   ```
-  docker-compose up -d ; docker-compose logs
+  docker-compose up
   ```
   - The resulting rpm(s) will be created in ${WSROOT}/.buildenv/pkgdir/RPMS
   - The resulting log resides at ${WSROOT}/.buildenv/pkgdir/rpm.log

@@ -354,9 +354,15 @@ create_rpm() {
     log "INFO ${PKGDIR}/gen_rpm ${PKGDIR}/SPECS/${SPECNAME}.spec" >> ${log}
     ${PKGDIR}/gen_rpm ${PKGDIR}/SPECS/${SPECNAME}.spec >> ${log} 2>&1
 
-    if [ -f "${KEY_PATH}/secring.gpg" ]; then
-      for RPM_FILENAME in `find ${PKGDIR}/RPMS -name \*.rpm -print`; do
-        log "INFO rpm created at ${RPM_FILENAME}" >> ${log}
+    if [ ! -f "${KEY_PATH}/secring.gpg" ]; then
+      log "WARNING Can't find ${KEY_PATH}/.gnupg/secring.gpg" >> ${log}
+      log "WARNING gpg KeyRing missing - Package Signing skipped" | tee -a ${log}
+      SIGNRPM="False"
+    fi
+
+    for RPM_FILENAME in `find ${PKGDIR}/RPMS -name \*.rpm -print`; do
+      log "INFO rpm created at ${RPM_FILENAME}" >> ${log}
+      if [ "${SIGNRPM}" == "True" ]; then
         log "INFO signing ${RPM_FILENAME}" >> ${log}
         ${PKGDIR}/sign_rpm ${RPM_FILENAME} >> ${log} 2>&1
         if [ "$?" = "0" ]; then
@@ -365,9 +371,6 @@ create_rpm() {
           log "INFO Error Signing Package [$PKG_DESC]" | tee -a ${log}
           return 4
         fi
-      done
-    else
-      log "WARNING Can't find ${KEY_PATH}/.gnupg/secring.gpg" >> ${log}
-      log "WARNING gpg KeyRing missing - Package Signing skipped" | tee -a ${log}
-    fi
+      fi
+    done
 }

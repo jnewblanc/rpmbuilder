@@ -6,7 +6,8 @@
 # that don't change often and are typically identical between repositories
 #
 
-DEBUG="True"
+DEBUG="False"
+SIGNRPM="True"
 
 if [ "${KEY_NAME}" = "" ]; then
   KEY_NAME="devOps <devOps@example.com>"
