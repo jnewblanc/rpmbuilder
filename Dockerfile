@@ -1,5 +1,3 @@
-# Install the base requirements for the app.
-# This stage is to support development.
 FROM centos:7.8.2003 AS base
 LABEL rpmbuilder_version="0.1"
 
@@ -18,9 +16,8 @@ RUN useradd -ms /bin/bash build --home /home/build
 # Copy code to container
 COPY . /home/build
 
-# The following command expects WSROOT to be set in the environment
+# run rpmcreate as the build user.  The following command expects WSROOT to be
+# set in the environment, usually through docker-compose
 CMD su - build -c "/home/build/rpmbuilder/bin/rpmcreate.sh -ws ${WSROOT}"
 
-# Resulting rpm located in workspace which, for now, is mounted
-
-# CMD [ "/bin/bash", "-c", "/bin/sleep 5000" ]
+# The resulting rpm located in the workspace which, for now, is mounted

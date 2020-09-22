@@ -1,3 +1,4 @@
+# secrets_lib.sh - Secret management functions
 
 load_key_passphrase() {
   log "INFO Loading Passphrase" | tee -a ${log}

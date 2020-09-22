@@ -1,4 +1,4 @@
-# The __VALUES__ below get autopopulated - do not change
+# The __VALUES__ in the block below get autopopulated - do not change
 %define wsroot           __WSROOT__
 %define build_plat       __PLAT__
 %define build_arch       __ARCH__
@@ -43,7 +43,7 @@ BUILD_NAME=%pkg_name
 # Create the directory structure as needed
 %prep
 
-# No need for "build" - sources are built externally, if needed
+# No need for "build" - sources are built externally via CI/CD platform, if needed
 %build
 
 # Create the staging area for the rpm package

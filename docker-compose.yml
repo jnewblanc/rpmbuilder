@@ -11,4 +11,3 @@ services:
       # source content and some packaging files.  The resulting rpm is placed in
       # this repo.
       - ./rpmbuilder/:/home/build/repos/rpmbuilder
-#    command: sleep 1000

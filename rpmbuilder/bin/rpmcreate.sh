@@ -8,13 +8,13 @@
 BINDIR=$(cd $(/bin/dirname $0); pwd)
 RBDIR=$(cd ${BINDIR}/..; pwd)
 
-# Load globals and libs
-#  This needs to happen before command line parsing so that default values can be overwritten
 if [ ! -d "${BINDIR}" ]; then
   echo "Can not find script directory ${BINDIR}"
   echo "Aborting..."
   exit 1
 else
+  # Load globals and libs
+  #  This needs to happen before command line parsing so that default values can be overwritten
   . ${RBDIR}/globals.sh
   . ${RBDIR}/lib/rpm_lib.sh
   . ${RBDIR}/lib/log_lib.sh
@@ -69,8 +69,9 @@ if [ "${WSROOT}" = "" ]; then
   usage
 fi
 
-# Load version info
-if [ -f "${WSROOT}/.buildenv/version.sh" ]; then
+# Load version info if version isn't already set
+if [ "${PKG_VERSION}" = "" -a -f "${WSROOT}/.buildenv/version.sh" ]; then
+  log "INFO Loading version info from ${WSROOT}/.buildenv/version.sh"
   . ${WSROOT}/.buildenv/version.sh
 fi
 

@@ -1,5 +1,5 @@
-# This file contains some static variables that are used by rpmcreate to
-# generate the package
+# pkginfo.sh - This file contains some static variables that are used by
+# rpmcreate to generate the package
 
 LICENSE="Fully owned by CompanyName, all rights reserved"
 VENDOR_NAME="CompanyName"

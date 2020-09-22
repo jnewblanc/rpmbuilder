@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # globals.sh
 #
 # define global variables used throughout the rpm packaging.  These are variables

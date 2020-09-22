@@ -1,6 +1,4 @@
-#!/bin/sh
-#
-# rpm_env.sh
+# rpm_lib.sh
 #
 # functions to help us with the creation of rpms
 #

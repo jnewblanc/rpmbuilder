@@ -1,6 +1,4 @@
-#!/bin/sh
-#
-# Version related build functions
+# version_lib.sh - Version related functions
 #
 # Requires WSROOT to be set to the full path of the workspace
 #
@@ -172,10 +170,10 @@ replace_version_file()
     $ECHO "# Did not update version file - Workspace is not specified"
   else
 
-    VERSION_FILENAME="buildenv/version.sh"
+    VERSION_FILENAME=".buildenv/version.sh"
     if [ ! -f "${WSROOT}/${VERSION_FILENAME}" ]; then
       if [ "${ALT_VER_FILENAME}" != "" ]; then
-        VERSION_FILENAME="buildenv/${ALT_VER_FILENAME}"
+        VERSION_FILENAME="${ALT_VER_FILENAME}"
       fi
       if [ ! -f "${WSROOT}/${VERSION_FILENAME}" ]; then
         $ECHO "# replace_version_file: Error - Can not find version file ${WSROOT}/${VERSION_FILENAME}.  Aborting"
